@@ -168,7 +168,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "New TicTacToe"))
         self.pushButton_19.setText(_translate("MainWindow", "CANCEL"))
         self.pushButton_18.setText(_translate("MainWindow", "START"))
         self.pushButton_17.setText(_translate("MainWindow", "RESET"))
