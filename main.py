@@ -3,9 +3,7 @@ from game_core.game_functions import messages
 from PyQt5 import QtWidgets
 from tictactoe_ui import Ui_MainWindow
 import sys
-
-# variable d'environnement afin d'utiliser wayland et non x11 sur Ubuntu
-os.environ['QT_QPA_PLATFORM'] = 'wayland'
+from players.players import Players
 
 
 # Point d'entrée de l'application
@@ -17,6 +15,9 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 if __name__ == '__main__':
+    player_one = Players("Bruno", "X")
+    print(player_one.__repr__())
+
     app = QtWidgets.QApplication(sys.argv)
     window = Tictactoe_main()
     window.show()
