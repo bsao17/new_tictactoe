@@ -14,7 +14,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         super(Tictactoe_main, self).__init__()
         # Initialisation de l'interface Ui_MainWindow
         self.setupUi(self)
-        messages(self, "Infos", f"button {self.pushButton_1.objectName()}, clicked !")
 
 
 if __name__ == '__main__':
