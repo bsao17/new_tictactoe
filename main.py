@@ -1,4 +1,5 @@
 import os
+from game_core.game_functions import messages
 from PyQt5 import QtWidgets
 from tictactoe_ui import Ui_MainWindow
 import sys
@@ -13,7 +14,7 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         super(Tictactoe_main, self).__init__()
         # Initialisation de l'interface Ui_MainWindow
         self.setupUi(self)
-        self.pushButton_1.clicked.connect()
+        messages(self, "Infos", f"button {self.pushButton_1.objectName()}, clicked !")
 
 
 if __name__ == '__main__':
