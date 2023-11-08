@@ -1,10 +1,5 @@
-from PyQt5.QtWidgets import QMessageBox
+from players_class import Players_class
 
+player_one = Players_class("Player 1", "X")
 
-def messages(message: str):
-    return QMessageBox(message)
-
-
-class Players:
-    def __init__(self, username):
-        self.username = username
+player_two = Players_class("Player 2", "O")
