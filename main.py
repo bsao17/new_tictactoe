@@ -1,21 +1,24 @@
-import sys
 import os
-from tictactoe_ui import Ui_MainWindow
-
+from game_core.game_functions import messages
 from PyQt5 import QtWidgets
+from tictactoe_ui import Ui_MainWindow
+import sys
 
+# variable d'environnement afin d'utiliser wayland et non x11 sur Ubuntu
 os.environ['QT_QPA_PLATFORM'] = 'wayland'
 
 
-class MyApplication(QtWidgets.QMainWindow, Ui_MainWindow):
+# Point d'entrée de l'application
+class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super(MyApplication, self).__init__()
-        self.setupUi(self)  # Initialisation de l'interface Ui_MainWindow
+        super(Tictactoe_main, self).__init__()
+        # Initialisation de l'interface Ui_MainWindow
+        self.setupUi(self)
 
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-    window = MyApplication()
+    window = Tictactoe_main()
     window.show()
 
     app.exec_()
