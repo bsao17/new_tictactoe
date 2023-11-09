@@ -15,7 +15,8 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
 
-    def closeEvent(self, a0, QCloseEvent=None): # real signature unknown; restored from __doc__
+    # Surcharge de la methode pour executer QMessageBox
+    def closeEvent(self, a0, QCloseEvent=None):
         messages(self, "Question", "Souhaitez vous vraiment quitter le jeu ?")
 
     @pyqtSlot()
@@ -24,12 +25,8 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 if __name__ == '__main__':
-    player_one = Players("Bruno", "X")
-    print(repr(player_one))
-
     app = QtWidgets.QApplication(sys.argv)
     window = Tictactoe_main()
     window.show()
 
     app.exec_()
-    print(str(player_one))
