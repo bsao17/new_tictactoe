@@ -17,15 +17,17 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
 
     @pyqtSlot()
     def on_close_triggered(self):
+        messages(self, "Quitter","Souhaitez vous vraiment quitter le jeu ?")
         self.close()
 
 
 if __name__ == '__main__':
     player_one = Players("Bruno", "X")
-    print(player_one.__repr__())
+    print(repr(player_one))
 
     app = QtWidgets.QApplication(sys.argv)
     window = Tictactoe_main()
     window.show()
 
     app.exec_()
+    print(str(player_one))
