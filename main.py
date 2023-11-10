@@ -13,7 +13,7 @@ from players.players import Players
 
 # Point d'entrée de l'application
 class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, i=None):
         super(Tictactoe_main, self).__init__()
         # Initialisation de l'interface Ui_MainWindow
         self.setupUi(self)
@@ -22,6 +22,34 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
         self.pushButton_start.clicked.connect(self.on_start_triggered)
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
+
+        for i in range(1, 17):
+            if i == 1:
+                self.pushButton_1.clicked.connect(self.get_attribute_key(i))
+            elif i == 2:
+                self.pushButton_2.clicked.connect(self.get_attribute_key(i))
+            elif i == 3:
+                self.pushButton_3.clicked.connect(self.get_attribute_key(i))
+            elif i == 4:
+                self.pushButton_4.clicked.connect(self.get_attribute_key(i))
+            elif i == 5:
+                self.pushButton_5.clicked.connect(self.get_attribute_key(i))
+            elif i == 6:
+                self.pushButton_6.clicked.connect(self.get_attribute_key(i))
+            elif i == 7:
+                self.pushButton_7.clicked.connect(self.get_attribute_key(i))
+            elif i == 8:
+                self.pushButton_8.clicked.connect(self.get_attribute_key(i))
+            elif i == 9:
+                self.pushButton_9.clicked.connect(self.get_attribute_key(i))
+            elif i == 10:
+                self.pushButton_10.clicked.connect(self.get_attribute_key(i))
+
+    def get_attribute_key(self, index):
+        return lambda: messages (
+            self, "Information", f"Case {index} clique !"
+        )
+        # TODO: Corriger l'affichage
 
     def closeEvent(self, event):
         """
