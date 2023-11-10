@@ -44,9 +44,21 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.pushButton_9.clicked.connect(self.get_attribute_key(i))
             elif i == 10:
                 self.pushButton_10.clicked.connect(self.get_attribute_key(i))
+            elif i == 11:
+                self.pushButton_11.clicked.connect(self.get_attribute_key(i))
+            elif i == 12:
+                self.pushButton_12.clicked.connect(self.get_attribute_key(i))
+            elif i == 13:
+                self.pushButton_13.clicked.connect(self.get_attribute_key(i))
+            elif i == 14:
+                self.pushButton_14.clicked.connect(self.get_attribute_key(i))
+            elif i == 15:
+                self.pushButton_15.clicked.connect(self.get_attribute_key(i))
+            elif i == 16:
+                self.pushButton_16.clicked.connect(self.get_attribute_key(i))
 
     def get_attribute_key(self, index):
-        return lambda: messages (
+        return lambda: messages(
             self, "Information", f"Case {index} clique !"
         )
         # TODO: Corriger l'affichage
