@@ -1,6 +1,7 @@
 import os
 
 from PyQt5.QtGui import QCloseEvent
+from PyQt5.QtWidgets import QMessageBox
 
 from game_core.game_functions import messages
 from PyQt5 import QtWidgets
@@ -19,8 +20,9 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
 
     def closeEvent(self, event):
-        message_box = messages(self, "Question", "Souhaitez-vous vraiment quitter le jeu ?")
-        if message_box.exec_() == QtWidgets.QMessageBox.Yes:
+        message_box = QMessageBox.question(self, "Question", "Souhaitez-vous vraiment quitter le jeu ?",
+                                           QMessageBox.Yes | QMessageBox.No)
+        if message_box == QMessageBox.Yes:
             event.accept()
         else:
             event.ignore()  # Annuler la fermeture si l'utilisateur choisit 'Non'
