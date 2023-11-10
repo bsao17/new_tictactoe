@@ -18,21 +18,16 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
 
-    # Surcharge de la methode pour executer QMessageBox
     def closeEvent(self, event):
-        message_box = messages(self, "Question", "Souhaitez vous vraiment quitter le jeu ?")
+        message_box = messages(self, "Question", "Souhaitez-vous vraiment quitter le jeu ?")
         if message_box.exec_() == QtWidgets.QMessageBox.Yes:
             event.accept()
         else:
-            pass
+            event.ignore()  # Annuler la fermeture si l'utilisateur choisit 'Non'
 
     @pyqtSlot()
     def on_close_triggered(self):
-        close_event = QCloseEvent()
-        if close_event.isAccepted():
-            self.close()
-        else:
-            pass
+        self.close()  # Déclencher directement la méthode closeEvent surchargée
 
 
 if __name__ == '__main__':
