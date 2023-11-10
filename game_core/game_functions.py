@@ -3,14 +3,14 @@ from PyQt5.QtWidgets import QMessageBox
 
 def messages(self, title, message):
     """
-    Returns a QMessageBox question with the given title and message.
+    Displays an information message box with the given title and message.
 
     Parameters:
-        self (object): The object instance.
-        title (str): The title of the QMessageBox.
-        message (str): The message to display in the QMessageBox.
+        self (QWidget): The parent widget.
+        title (str): The title of the message box.
+        message (str): The message to be displayed.
 
     Returns:
-        int: The user's response to the question.
+        int: The result of the message box button clicked (QMessageBox.Ok).
     """
-    return QMessageBox.question(self, title, message)
+    return QMessageBox.information(self, title, message, QMessageBox.Ok)
