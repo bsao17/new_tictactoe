@@ -47,12 +47,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
     def closeEvent(self, event):
         """
         Handles the close event of the window.
-
-        Args:
-            event (QCloseEvent): The close event triggered by the user.
-
-        Returns:
-            None
         """
         message_box = QMessageBox.question(self, "Question", "Souhaitez-vous vraiment quitter le jeu ?",
                                            QMessageBox.Yes | QMessageBox.No)
