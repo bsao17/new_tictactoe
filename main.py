@@ -28,39 +28,13 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
 
         for i in range(1, 17):
-            match i:
-                case 1:
-                    self.pushButton_1.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 2:
-                    self.pushButton_2.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 3:
-                    self.pushButton_3.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 4:
-                    self.pushButton_4.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 5:
-                    self.pushButton_5.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 6:
-                    self.pushButton_6.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 7:
-                    self.pushButton_7.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 8:
-                    self.pushButton_8.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 9:
-                    self.pushButton_9.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 10:
-                    self.pushButton_10.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 11:
-                    self.pushButton_11.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 12:
-                    self.pushButton_12.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 13:
-                    self.pushButton_13.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 14:
-                    self.pushButton_14.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 15:
-                    self.pushButton_15.clicked.connect(lambda _: self.get_attribute_key(i))
-                case 16:
-                    self.pushButton_16.clicked.connect(lambda _: self.get_attribute_key(i))
+            button_number = f"pushButton_{i}"
+            button = getattr(self, button_number)
+            if i % 2 == 0:
+                button.clicked.connect(lambda: self.get_attribute_key(i))
+
+            else:
+                button.clicked.connect(lambda: self.get_attribute_key(i))
 
     def get_attribute_key(self, iteration):
         button_name = f"pushButton_{iteration}"
