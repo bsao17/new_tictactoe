@@ -13,10 +13,14 @@ from players.players import Players
 
 # Point d'entrée de l'application
 class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self, i=None):
+    def __init__(self):
         super(Tictactoe_main, self).__init__()
         # Initialisation de l'interface Ui_MainWindow
         self.setupUi(self)
+
+        self.player = None
+        self.player_one = Players(self, "player_one", "x")
+        self.player_two = Players(self, "player_two", "o")
 
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
@@ -24,44 +28,21 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
 
         for i in range(1, 17):
-            if i == 1:
-                self.pushButton_1.clicked.connect(self.get_attribute_key(i))
-            elif i == 2:
-                self.pushButton_2.clicked.connect(self.get_attribute_key(i))
-            elif i == 3:
-                self.pushButton_3.clicked.connect(self.get_attribute_key(i))
-            elif i == 4:
-                self.pushButton_4.clicked.connect(self.get_attribute_key(i))
-            elif i == 5:
-                self.pushButton_5.clicked.connect(self.get_attribute_key(i))
-            elif i == 6:
-                self.pushButton_6.clicked.connect(self.get_attribute_key(i))
-            elif i == 7:
-                self.pushButton_7.clicked.connect(self.get_attribute_key(i))
-            elif i == 8:
-                self.pushButton_8.clicked.connect(self.get_attribute_key(i))
-            elif i == 9:
-                self.pushButton_9.clicked.connect(self.get_attribute_key(i))
-            elif i == 10:
-                self.pushButton_10.clicked.connect(self.get_attribute_key(i))
-            elif i == 11:
-                self.pushButton_11.clicked.connect(self.get_attribute_key(i))
-            elif i == 12:
-                self.pushButton_12.clicked.connect(self.get_attribute_key(i))
-            elif i == 13:
-                self.pushButton_13.clicked.connect(self.get_attribute_key(i))
-            elif i == 14:
-                self.pushButton_14.clicked.connect(self.get_attribute_key(i))
-            elif i == 15:
-                self.pushButton_15.clicked.connect(self.get_attribute_key(i))
-            elif i == 16:
-                self.pushButton_16.clicked.connect(self.get_attribute_key(i))
+            button_number = f"pushButton_{i}"
+            button = getattr(self, button_number)
+            if i % 2 == 0:
+                button.clicked.connect(lambda: self.get_attribute_key(i))
 
-    def get_attribute_key(self, index):
-        return lambda: messages(
-            self, "Information", f"Case {index} clique !"
-        )
-        # TODO: Corriger l'affichage
+            else:
+                button.clicked.connect(lambda: self.get_attribute_key(i))
+
+    def get_attribute_key(self, iteration):
+        button_name = f"pushButton_{iteration}"
+        button = getattr(self, button_name)
+        if iteration % 2 == 0:
+            button.setText(self.player_one.label)
+        else:
+            button.setText(self.player_one.label)
 
     def closeEvent(self, event):
         """

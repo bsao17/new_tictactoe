@@ -1,7 +1,11 @@
 class Players:
-    def __init__(self, username, label):
-        self.username = username
-        self.label = label
+    def __init__(self, *args):
+        self.username = args[0]
+        self.label = args[1]
+        self.grid = [[0, 0, 0, 0],
+                       [0, 0, 0, 0],
+                       [0, 0, 0, 0],
+                       [0, 0, 0, 0]]
 
     def get_player_username(self):
         """
@@ -47,13 +51,21 @@ class Players:
         """
         self.label = new_label
 
-    def update_profile(self):
-        # print("Choississez votre nom d'utilisateur et le symbole qui sera afficher dans vos cases.")
-        # print("Votre nom d'utilisateur actuel est: ")
-        # self.get_player_username()
-        # new_username = input("Choisissez votre nom d'utilisateur ! ")
-        # self.set_player_username(new_username)
-        # print(f"Votre nom d'utilisateur est désormais {new_username}")
+    def update_profile(self, label, username):
+        """
+        Update the profile of the player.
+
+        Args:
+            label (str): The new label for the player.
+            username (str): The new username for the player.
+
+        Returns:
+            None
+        """
+        self.set_player_label(label)
+        self.set_player_username(username)
+
+    def chatgpt_move(self):
         pass
 
     def __str__(self):
