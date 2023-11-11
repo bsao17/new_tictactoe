@@ -27,9 +27,7 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
             button = getattr(self, button_number)
             if i % 2 == 0:
                 button.clicked.connect(lambda: self.get_attribute_key(i))
-
-            else:
-                button.clicked.connect(lambda: self.get_attribute_key(i))
+            button.clicked.connect(lambda: self.get_attribute_key(i))
 
     def get_attribute_key(self, iteration):
         button_name = f"pushButton_{iteration}"
