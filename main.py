@@ -1,9 +1,4 @@
-import os
-
-from PyQt5.QtGui import QCloseEvent
 from PyQt5.QtWidgets import QMessageBox
-
-from game_core.game_functions import messages
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot
 from tictactoe_ui import Ui_MainWindow
@@ -19,8 +14,8 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.player = None
-        self.player_one = Players(self, "player_one", "x")
-        self.player_two = Players(self, "player_two", "o")
+        self.player_one = Players("player_one", "x")
+        self.player_two = Players("player_two", "o")
 
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
