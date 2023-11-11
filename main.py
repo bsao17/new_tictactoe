@@ -13,13 +13,14 @@ from players.players import Players
 
 # Point d'entrée de l'application
 class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self, i=None):
+    def __init__(self):
         super(Tictactoe_main, self).__init__()
         # Initialisation de l'interface Ui_MainWindow
         self.setupUi(self)
 
-        self.grid_1 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-        self.grid_2 = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0],]
+        self.player = None
+        self.player_one = Players(self, "player_one", "x")
+        self.player_two = Players(self, "player_two", "o")
 
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
@@ -27,98 +28,47 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
 
         for i in range(1, 17):
-            if i % 2 == 0:
-                self.player = 2
-            else:
-                self.player = 1
             match i:
                 case 1:
-                    if self.player == self.player_one:
-                        self.pushButton_1.setText("x")
-                    else:
-                        self.pushButton_1.setText("o")
+                    self.pushButton_1.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 2:
-                    if self.player == self.player_one:
-                        self.pushButton_5.setText("x")
-                    else:
-                        self.pushButton_5.setText("o")
+                    self.pushButton_2.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 3:
-                    if self.player == self.player_one:
-                        self.pushButton_9.setText("x")
-                    else:
-                        self.pushButton_9.setText("o")
+                    self.pushButton_3.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 4:
-                    if self.player == self.player_one:
-                        self.pushButton_2.setText("x")
-                    else:
-                        self.pushButton_2.setText("o")
+                    self.pushButton_4.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 5:
-                    if self.player == self.player_one:
-                        self.pushButton_6.setText("x")
-                    else:
-                        self.pushButton_6.setText("o")
+                    self.pushButton_5.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 6:
-                    if self.player == self.player_one:
-                        self.pushButton_10.setText("x")
-                    else:
-                        self.pushButton_10.setText("o")
+                    self.pushButton_6.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 7:
-                    if self.player == self.player_one:
-                        self.pushButton_3.setText("x")
-                    else:
-                        self.pushButton_3.setText("o")
+                    self.pushButton_7.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 8:
-                    if self.player == self.player_one:
-                        self.pushButton_7.setText("x")
-                    else:
-                        self.pushButton_7.setText("o")
+                    self.pushButton_8.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 9:
-                    if self.player == self.player_one:
-                        self.pushButton_11.setText("x")
-                    else:
-                        self.pushButton_11.setText("o")
+                    self.pushButton_9.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 10:
-                    if self.player == self.player_one:
-                        self.pushButton_4.setText("x")
-                    else:
-                        self.pushButton_4.setText("o")
+                    self.pushButton_10.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 11:
-                    if self.player == self.player_one:
-                        self.pushButton_8.setText("x")
-                    else:
-                        self.pushButton_8.setText("o")
+                    self.pushButton_11.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 12:
-                    if self.player == self.player_one:
-                        self.pushButton_12.setText("x")
-                    else:
-                        self.pushButton_12.setText("o")
+                    self.pushButton_12.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 13:
-                    if self.player == self.player_one:
-                        self.pushButton_13.setText("x")
-                    else:
-                        self.pushButton_13.setText("o")
+                    self.pushButton_13.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 14:
-                    if self.player == self.player_one:
-                        self.pushButton_14.setText("x")
-                    else:
-                        self.pushButton_14.setText("o")
+                    self.pushButton_14.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 15:
-                    if self.player == self.player_one:
-                        self.pushButton_15.setText("x")
-                    else:
-                        self.pushButton_15.setText("o")
+                    self.pushButton_15.clicked.connect(lambda _: self.get_attribute_key(i))
                 case 16:
-                    if self.player == self.player_one:
-                        self.pushButton_16.setText("x")
-                    else:
-                        self.pushButton_16.setText("o")
+                    self.pushButton_16.clicked.connect(lambda _: self.get_attribute_key(i))
 
-
-    def get_attribute_key(self, index):
-        return lambda: messages(
-            self, "Information", f"Case {index} clique !"
-        )
-        # TODO: Corriger l'affichage
+    def get_attribute_key(self, iteration):
+        button_name = f"pushButton_{iteration}"
+        button = getattr(self, button_name)
+        if iteration % 2 == 0:
+            button.setText(self.player_one.label)
+        else:
+            button.setText(self.player_one.label)
 
     def closeEvent(self, event):
         """
