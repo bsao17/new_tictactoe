@@ -18,44 +18,101 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         # Initialisation de l'interface Ui_MainWindow
         self.setupUi(self)
 
+        self.grid_1 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        self.grid_2 = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0],]
+
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
         self.pushButton_start.clicked.connect(self.on_start_triggered)
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
 
         for i in range(1, 17):
-            if i == 1:
-                self.pushButton_1.clicked.connect(self.get_attribute_key(i))
-            elif i == 2:
-                self.pushButton_2.clicked.connect(self.get_attribute_key(i))
-            elif i == 3:
-                self.pushButton_3.clicked.connect(self.get_attribute_key(i))
-            elif i == 4:
-                self.pushButton_4.clicked.connect(self.get_attribute_key(i))
-            elif i == 5:
-                self.pushButton_5.clicked.connect(self.get_attribute_key(i))
-            elif i == 6:
-                self.pushButton_6.clicked.connect(self.get_attribute_key(i))
-            elif i == 7:
-                self.pushButton_7.clicked.connect(self.get_attribute_key(i))
-            elif i == 8:
-                self.pushButton_8.clicked.connect(self.get_attribute_key(i))
-            elif i == 9:
-                self.pushButton_9.clicked.connect(self.get_attribute_key(i))
-            elif i == 10:
-                self.pushButton_10.clicked.connect(self.get_attribute_key(i))
-            elif i == 11:
-                self.pushButton_11.clicked.connect(self.get_attribute_key(i))
-            elif i == 12:
-                self.pushButton_12.clicked.connect(self.get_attribute_key(i))
-            elif i == 13:
-                self.pushButton_13.clicked.connect(self.get_attribute_key(i))
-            elif i == 14:
-                self.pushButton_14.clicked.connect(self.get_attribute_key(i))
-            elif i == 15:
-                self.pushButton_15.clicked.connect(self.get_attribute_key(i))
-            elif i == 16:
-                self.pushButton_16.clicked.connect(self.get_attribute_key(i))
+            if i % 2 == 0:
+                self.player = 2
+            else:
+                self.player = 1
+            match i:
+                case 1:
+                    if self.player == self.player_one:
+                        self.pushButton_1.setText("x")
+                    else:
+                        self.pushButton_1.setText("o")
+                case 2:
+                    if self.player == self.player_one:
+                        self.pushButton_5.setText("x")
+                    else:
+                        self.pushButton_5.setText("o")
+                case 3:
+                    if self.player == self.player_one:
+                        self.pushButton_9.setText("x")
+                    else:
+                        self.pushButton_9.setText("o")
+                case 4:
+                    if self.player == self.player_one:
+                        self.pushButton_2.setText("x")
+                    else:
+                        self.pushButton_2.setText("o")
+                case 5:
+                    if self.player == self.player_one:
+                        self.pushButton_6.setText("x")
+                    else:
+                        self.pushButton_6.setText("o")
+                case 6:
+                    if self.player == self.player_one:
+                        self.pushButton_10.setText("x")
+                    else:
+                        self.pushButton_10.setText("o")
+                case 7:
+                    if self.player == self.player_one:
+                        self.pushButton_3.setText("x")
+                    else:
+                        self.pushButton_3.setText("o")
+                case 8:
+                    if self.player == self.player_one:
+                        self.pushButton_7.setText("x")
+                    else:
+                        self.pushButton_7.setText("o")
+                case 9:
+                    if self.player == self.player_one:
+                        self.pushButton_11.setText("x")
+                    else:
+                        self.pushButton_11.setText("o")
+                case 10:
+                    if self.player == self.player_one:
+                        self.pushButton_4.setText("x")
+                    else:
+                        self.pushButton_4.setText("o")
+                case 11:
+                    if self.player == self.player_one:
+                        self.pushButton_8.setText("x")
+                    else:
+                        self.pushButton_8.setText("o")
+                case 12:
+                    if self.player == self.player_one:
+                        self.pushButton_12.setText("x")
+                    else:
+                        self.pushButton_12.setText("o")
+                case 13:
+                    if self.player == self.player_one:
+                        self.pushButton_13.setText("x")
+                    else:
+                        self.pushButton_13.setText("o")
+                case 14:
+                    if self.player == self.player_one:
+                        self.pushButton_14.setText("x")
+                    else:
+                        self.pushButton_14.setText("o")
+                case 15:
+                    if self.player == self.player_one:
+                        self.pushButton_15.setText("x")
+                    else:
+                        self.pushButton_15.setText("o")
+                case 16:
+                    if self.player == self.player_one:
+                        self.pushButton_16.setText("x")
+                    else:
+                        self.pushButton_16.setText("o")
+
 
     def get_attribute_key(self, index):
         return lambda: messages(
