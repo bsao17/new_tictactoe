@@ -17,9 +17,11 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.player_one = Players("player_one", "x")
         self.player_two = Players("player_two", "o")
 
+        # Liste des alignements valides pour le jeu
+        self.alignements_valides = []
+
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
-
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
 
         for i in range(1, 17):
@@ -68,6 +70,11 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
 
     @pyqtSlot()
     def on_reset_triggered(self):
+        pass
+
+    def check_align(self, position):
+        # Ajouter la logique pour vérifier un nouvel alignement
+        # et mettre à jour self.alignements_valides
         pass
 
 
