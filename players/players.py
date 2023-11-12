@@ -39,8 +39,15 @@ class Players:
         self.set_player_label(label)
         self.set_player_username(username)
 
-    def chatgpt_move(self):
-        pass
+    def chatgpt_move(self, board):
+        """
+        compute the best shot for ChatGPT to play
+        :param board:
+        :return:
+        """
+        meilleur_coup = 0
+        # Logique simulée ou API ChatGPT pour décider du mouvement
+        return meilleur_coup
 
     def __str__(self):
         """
