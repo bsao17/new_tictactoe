@@ -19,7 +19,7 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
-        self.pushButton_start.clicked.connect(self.on_start_triggered)
+
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
 
         for i in range(1, 17):
@@ -63,7 +63,7 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.close()  # Déclencher directement la méthode closeEvent surchargée
 
     @pyqtSlot()
-    def on_start_triggered(self):
+    def player_choice(self):
         pass
 
     @pyqtSlot()

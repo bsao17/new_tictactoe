@@ -2,6 +2,7 @@ class Players:
     def __init__(self, *args):
         self.username = args[0]
         self.label = args[1]
+        self.is_virtual = False
         self.grid = [[0, 0, 0, 0],
                      [0, 0, 0, 0],
                      [0, 0, 0, 0],
@@ -44,17 +45,11 @@ class Players:
     def __str__(self):
         """
         Returns a string representation of the object.
-
-        :return: A string representing the characteristics of each player.
-        :rtype: str
         """
         return f"Classe qui détermine les caractéristiques de chaque joueur !"
 
     def __repr__(self):
         """
         Return a string representation of the object.
-
-        Returns:
-            str: The string representation of the object.
         """
         return f"MyClass(Players: {self.__class__}) for player:  {self.username} with label {self.label} !"
