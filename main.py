@@ -28,15 +28,17 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
             button = getattr(self, button_number)
             button.clicked.connect(lambda _, i=i: self.get_attribute_key(i))
 
-            # button.clicked.connect(lambda: self.get_attribute_key(i))
-
     def get_attribute_key(self, iteration):
         button_name = f"pushButton_{iteration}"
         button = getattr(self, button_name)
-        if iteration % 2 == 0:
+        if self.player_one.is_clicked:
             button.setText(self.player_one.label)
-        else:
-            button.setText(self.player_one.label)
+            self.player_one.is_clicked = False
+            self.player_two.is_clicked = True
+        elif self.player_two.is_clicked:
+            button.setText(self.player_two.label)
+            self.player_one.is_clicked = True
+            self.player_two.is_clicked = False
 
     def closeEvent(self, event):
         """
