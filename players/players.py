@@ -3,10 +3,6 @@ class Players:
         self.username = args[0]
         self.label = args[1]
         self.is_virtual = False
-        self.grid = [[0, 0, 0, 0],
-                     [0, 0, 0, 0],
-                     [0, 0, 0, 0],
-                     [0, 0, 0, 0]]
 
     def get_player_username(self):
         """

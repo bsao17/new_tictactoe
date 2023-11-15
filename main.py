@@ -1,6 +1,8 @@
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot
+
+from game_core.game_functions import messages
 from tictactoe_ui import Ui_MainWindow
 import sys
 from players.players import Players
@@ -17,9 +19,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.player_one = Players("player_one", "x")
         self.player_two = Players("player_two", "o")
 
-        # Liste des alignements valides pour le jeu
-        self.alignements_valides = []
-
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
@@ -27,7 +26,9 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         for i in range(1, 17):
             button_number = f"pushButton_{i}"
             button = getattr(self, button_number)
-            button.clicked.connect(lambda: self.get_attribute_key(i))
+            button.clicked.connect(lambda _, i=i: self.get_attribute_key(i))
+
+            # button.clicked.connect(lambda: self.get_attribute_key(i))
 
     def get_attribute_key(self, iteration):
         button_name = f"pushButton_{iteration}"
