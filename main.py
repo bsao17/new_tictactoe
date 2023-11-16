@@ -66,10 +66,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.close()  # Déclencher directement la méthode closeEvent surchargée
 
     @pyqtSlot()
-    def player_choice(self):
-        pass
-
-    @pyqtSlot()
     def on_reset_triggered(self):
         pass
 
