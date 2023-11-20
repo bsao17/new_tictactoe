@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot
 
-from game_core.game_functions import messages
 from tictactoe_ui import Ui_MainWindow
 import sys
 from players.players import Players
