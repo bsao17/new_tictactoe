@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot
@@ -33,14 +34,16 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         button_name = f"pushButton_{iteration}"
         button = getattr(self, button_name)
         if not self.player_one.is_clicked:
+            button.setFont(QFont("Arial", 50))
             button.setText(self.player_one.label)
             button.setDisabled(True)
-            self.player_one.is_clicked = True
+            self.player_one.toggle_player()
         elif self.player_one.is_clicked:
+            button.setFont(QFont("Arial", 50))
             button.setText(self.player_two.label)
             button.setDisabled(True)
-            self.player_two.is_clicked = True
-            self.player_one.is_clicked = False
+            self.player_one.toggle_player()
+
 
     def closeEvent(self, event):
         """
