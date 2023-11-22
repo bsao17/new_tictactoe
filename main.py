@@ -6,6 +6,8 @@ from tictactoe_ui import Ui_MainWindow
 import sys
 from players.players import Players
 
+from game_core.board import Board
+
 
 # Point d'entrée de l'application
 class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -25,16 +27,19 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         for i in range(1, 17):
             button_number = f"pushButton_{i}"
             button = getattr(self, button_number)
-            button.clicked.connect(lambda _, i=i: self.get_attribute_key(i))
+            button.clicked.connect(lambda _, j=i: self.get_attribute_key(j))
 
     def get_attribute_key(self, iteration):
         button_name = f"pushButton_{iteration}"
         button = getattr(self, button_name)
         if not self.player_one.is_clicked:
             button.setText(self.player_one.label)
+            button.setDisabled(True)
             self.player_one.is_clicked = True
         elif self.player_one.is_clicked:
             button.setText(self.player_two.label)
+            button.setDisabled(True)
+            self.player_two.is_clicked = True
             self.player_one.is_clicked = False
 
     def closeEvent(self, event):

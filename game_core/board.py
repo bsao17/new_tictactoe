@@ -1,4 +1,4 @@
-class Grid:
+class Board:
     def __init__(self):
         # définition de la grille
         self.grid = [[0, 0, 0, 0],
