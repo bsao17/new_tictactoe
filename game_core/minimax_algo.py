@@ -10,28 +10,6 @@ class Cells:
         self.max_val = max_val
         self.min_val = min_val
 
-    def check_row_align(self):
-        for i in range(4):
-            if self.location[i] != 0 and self.location[i]:
-                if self.location[i] == self.location[i + 1] == self.location[i + 2]:
-                    return True
-
-    def check_col_align(self):
-        for i in range(4):
-            if self.location[i] != 0:
-                if self.location[i] == self.location[i + 4] == self.location[i + 8] == self.location[i + 12]:
-                    return True
-        return False
-
-    def check_diag_align(self):
-        for i in range(4):
-            for j in range(4):
-                if self.location[i] != 0:
-                    if self.location[i] == self.location[i + 5] == self.location[i + 10]:
-                        return True
-                    elif self.location[i] == self.location[i + 3] == self.location[i + 6]:
-                        return True
-
 
 def generate_cells(board):
     uboard = cp.deepcopy(board)
@@ -39,6 +17,26 @@ def generate_cells(board):
         for j in range(4):
             if uboard[i][j] == 0:
                 uboard[i][j] = Cells(uboard[i][j], (i, j), 0, 0)
+
+
+def max_value(board, location):
+    pass
+
+
+def min_value(board, location):
+    pass
+
+
+def check_row_align(board, location):
+    pass
+
+
+def check_col_align(board, location):
+    pass
+
+
+def check_diag_align(board, location):
+    pass
 
 
 if __name__ == '__main__':
