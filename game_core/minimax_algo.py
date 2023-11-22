@@ -79,6 +79,14 @@ class Cells:
         self.max_val = max_val
         self.min_val = min_val
 
+    def check_row_align(self):
+        pass
+
+    def check_col_align(self):
+        pass
+
+    def check_diag_align(self):
+        pass
 
 def generate_cells(board):
     uboard = cp.deepcopy(board)
