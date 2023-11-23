@@ -1,9 +1,13 @@
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot
+
 from tictactoe_ui import Ui_MainWindow
 import sys
 from players.players import Players
+
+from game_core.board import Board
 
 
 # Point d'entrée de l'application
@@ -17,9 +21,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.player_one = Players("player_one", "x")
         self.player_two = Players("player_two", "o")
 
-        # Liste des alignements valides pour le jeu
-        self.alignements_valides = []
-
         # Connexions des signaux
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
@@ -27,15 +28,24 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         for i in range(1, 17):
             button_number = f"pushButton_{i}"
             button = getattr(self, button_number)
-            button.clicked.connect(lambda: self.get_attribute_key(i))
+            button.clicked.connect(lambda _, j=i: self.get_attribute_key(j))
 
     def get_attribute_key(self, iteration):
         button_name = f"pushButton_{iteration}"
         button = getattr(self, button_name)
-        if iteration % 2 == 0:
+        if not self.player_one.is_clicked:
+            button.setFont(QFont("Arial", 50))
+            button.setStyleSheet("color: red;")
             button.setText(self.player_one.label)
-        else:
-            button.setText(self.player_one.label)
+            button.setDisabled(True)
+            self.player_one.toggle_player()
+        elif self.player_one.is_clicked:
+            button.setFont(QFont("Arial", 50))
+            button.setStyleSheet("color: blue;")
+            button.setText(self.player_two.label)
+            button.setDisabled(True)
+            self.player_one.toggle_player()
+
 
     def closeEvent(self, event):
         """
@@ -63,10 +73,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
             None
         """
         self.close()  # Déclencher directement la méthode closeEvent surchargée
-
-    @pyqtSlot()
-    def player_choice(self):
-        pass
 
     @pyqtSlot()
     def on_reset_triggered(self):

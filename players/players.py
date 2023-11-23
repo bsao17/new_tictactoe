@@ -3,10 +3,8 @@ class Players:
         self.username = args[0]
         self.label = args[1]
         self.is_virtual = False
-        self.grid = [[0, 0, 0, 0],
-                     [0, 0, 0, 0],
-                     [0, 0, 0, 0],
-                     [0, 0, 0, 0]]
+
+    is_clicked = True
 
     def get_player_username(self):
         """
@@ -49,6 +47,11 @@ class Players:
         # Logique simulée ou API ChatGPT pour décider du mouvement
         return meilleur_coup
 
+    @classmethod
+    def toggle_player(cls):
+        cls.is_clicked = not cls.is_clicked
+        return cls.is_clicked
+
     def __str__(self):
         """
         Returns a string representation of the object.
@@ -60,3 +63,10 @@ class Players:
         Return a string representation of the object.
         """
         return f"MyClass(Players: {self.__class__}) for player:  {self.username} with label {self.label} !"
+
+
+player_one = Players("joe", "X")
+print(player_one.is_clicked)
+player_one.toggle_player()
+print(player_one.is_clicked)
+
