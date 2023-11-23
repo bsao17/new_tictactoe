@@ -35,11 +35,13 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         button = getattr(self, button_name)
         if not self.player_one.is_clicked:
             button.setFont(QFont("Arial", 50))
+            button.setStyleSheet("color: red;")
             button.setText(self.player_one.label)
             button.setDisabled(True)
             self.player_one.toggle_player()
         elif self.player_one.is_clicked:
             button.setFont(QFont("Arial", 50))
+            button.setStyleSheet("color: blue;")
             button.setText(self.player_two.label)
             button.setDisabled(True)
             self.player_one.toggle_player()
