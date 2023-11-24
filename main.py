@@ -10,7 +10,7 @@ from players.players import Players
 from game_core.board import Board
 
 
-# Point d'entrée de l'application
+# Entry point for the program
 class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(Tictactoe_main, self).__init__()
@@ -21,7 +21,7 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.player_one = Players("player_one", "x")
         self.player_two = Players("player_two", "o")
 
-        # Connexions des signaux
+        # signals and slots connections
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
 
@@ -45,7 +45,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
             button.setText(self.player_two.label)
             button.setDisabled(True)
             self.player_one.toggle_player()
-
 
     def closeEvent(self, event):
         """
@@ -79,8 +78,8 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         pass
 
     def check_align(self, position):
-        # Ajouter la logique pour vérifier un nouvel alignement
-        # et mettre à jour self.alignements_valides
+        # TODO: Ajouter la logique pour vérifier un nouvel alignement
+        # TODO: et mettre à jour self.alignements_valides
         pass
 
 
