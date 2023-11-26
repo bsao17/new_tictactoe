@@ -37,15 +37,13 @@ class Players:
         self.set_player_label(label)
         self.set_player_username(username)
 
-    def chatgpt_move(self, board):
+    @classmethod
+    def is_player_clicked(cls):
         """
-        compute the best shot for ChatGPT to play
-        :param board:
-        :return:
+        Returns True if the player is clicked, False otherwise.
         """
-        meilleur_coup = 0
-        # Logique simulée ou API ChatGPT pour décider du mouvement
-        return meilleur_coup
+        return cls.is_clicked
+
 
     @classmethod
     def toggle_player(cls):
@@ -69,4 +67,3 @@ player_one = Players("joe", "X")
 print(player_one.is_clicked)
 player_one.toggle_player()
 print(player_one.is_clicked)
-

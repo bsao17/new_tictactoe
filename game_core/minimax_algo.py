@@ -1,46 +1,39 @@
-"""Minimax algorithm for Tic-Tac-Toe 'Custom' game."""
-import copy as cp
+"""
+---pseudocode minimax algorithm for tic-tac-toe game---
+
+function minimax(node, depth, maximizingPlayer) is
+    if depth = 0 or node is a terminal node then
+        return the heuristic value of node
+    if maximizingPlayer then
+        value := −∞
+        for each child of node do
+            value := max(value, minimax(child, depth − 1, FALSE))
+    else (* minimizing player *)
+        value := +∞
+        for each child of node do
+            value := min(value, minimax(child, depth − 1, TRUE))
+    return value
+"""
 
 
-# cells class represent a cell with position in the board, location in the board, max and min value of the cell
-class Cells:
-    def __init__(self, position, location, max_val, min_val):
-        self.position = position
-        self.location = location  # NOTE this is a list, [0] is row info and [1] is col info
-        self.max_val = max_val
-        self.min_val = min_val
+def minimax(board, depth, maximizing_player):
+    if depth == 0 or board.valid_alignment():
+        return board.evaluate()
+    if maximizing_player:
+        value = -float('inf')
+        for child in board.children("X"):
+            value = max(value, minimax(child, depth - 1, False))
+        return value
+    else:
+        value = float('inf')
+        for child in board.children("O"):
+            value = min(value, minimax(child, depth - 1, True))
+        return value
 
 
-def generate_cells(board):
-    uboard = cp.deepcopy(board)
-    for i in range(len(uboard)):
-        for j in range(4):
-            if uboard[i][j] == 0:
-                uboard[i][j] = Cells(uboard[i][j], (i, j), 0, 0)
-
-
-def max_value(board, location):
-    pass
-
-
-def min_value(board, location):
-    pass
-
-
-def check_row_align(board, location):
-    pass
-
-
-def check_col_align(board, location):
-    pass
-
-
-def check_diag_align(board, location):
+def board_evaluation(board):
     pass
 
 
 if __name__ == '__main__':
-    generate_cells([[0, 0, 0, 0],
-                    [0, 0, 0, 0],
-                    [0, 0, 0, 0],
-                    [0, 0, 0, 0]])
+    pass
