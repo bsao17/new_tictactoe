@@ -29,8 +29,8 @@ class Board:
         print(self.o_valid_align)
 
     def check_win(self):
-        x_win = True if sum(self.x_valid_align) == 34 else False
-        o_win = True if sum(self.o_valid_align) == 34 else False
+        x_win = print("X Winner") if sum(self.x_valid_align) == 34 else print("X Loser")
+        o_win = print("O Winner") if sum(self.o_valid_align) == 34 else print("O Loser")
 
     def children_score(self, player):
         children = []
