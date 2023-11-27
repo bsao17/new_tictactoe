@@ -77,11 +77,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
     def on_reset_triggered(self):
         pass
 
-    def check_align(self, position):
-        # TODO: Ajouter la logique pour vérifier un nouvel alignement
-        # TODO: et mettre à jour self.alignements_valides
-        pass
-
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
