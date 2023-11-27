@@ -15,10 +15,13 @@ function minimax(node, depth, maximizingPlayer) is
     return value
 """
 
+from game_core.board import Board
+import players
+
 
 def minimax(board, depth, maximizing_player):
-    if depth == 0 or board.valid_alignment():
-        return board.evaluate()
+    if depth == 0 or board.check_valid_alignment():
+        return board.check_valid_alignment()
     if maximizing_player:
         value = -float('inf')
         for child in board.children("X"):
@@ -36,4 +39,4 @@ def board_evaluation(board):
 
 
 if __name__ == '__main__':
-    pass
+    minimax(Board(), 16, True)
