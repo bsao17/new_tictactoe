@@ -9,9 +9,11 @@ class Board:
                          [9, 6, 7, 12],
                          [4, 15, 14, 1]]
         self.board = [[None, None, None, None],
-                      [None, None, "X", None],
+                      ["X", "X", "X", "X"],
                       [None, None, None, None],
                       [None, "O", None, None], ]
+        self.x_valid_align = []
+        self.o_valid_align = []
 
     # Align list of valid lists
     def check_valid_alignment(self):
@@ -20,12 +22,15 @@ class Board:
         for row in range(4):
             for col in range(4):
                 if self.board[row][col] == "X":
-                    x_valid_alignement.append(self.magic_id[row][col])
+                    self.x_valid_align.append(self.magic_id[row][col])
                 elif self.board[row][col] == "O":
-                    o_valid_alignement.append(self.magic_id[row][col])
-        print(x_valid_alignement)
-        print(o_valid_alignement)
+                    self.o_valid_align.append(self.magic_id[row][col])
+        print(self.x_valid_align)
+        print(self.o_valid_align)
 
+    def check_win(self):
+        x_win = True if sum(self.x_valid_align) == 34 else False
+        o_win = True if sum(self.o_valid_align) == 34 else False
 
     def children_score(self, player):
         children = []
@@ -47,6 +52,8 @@ class Board:
                         children.append(child)
         return children
 
+
 if __name__ == '__main__':
     my_board = Board()
     my_board.check_valid_alignment()
+    my_board.check_win()
