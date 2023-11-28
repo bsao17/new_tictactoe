@@ -1,14 +1,19 @@
+import numpy as np
+
+
 class Board:
     def __init__(self):
         # Initialise the magic_id, the sum of each alignment of four must equal 34
-        self.magic_id = [[16, 3, 2, 13],
-                         [5, 10, 11, 8],
-                         [9, 6, 7, 12],
-                         [4, 15, 14, 1]]
-        self.board = [["X", None, "X", "X"],
-                      [None, "X", None, None],
-                      [None, None, "X", None],
-                      [None, None, None, "X"], ]
+        self.magic_id = np.array([[16, 3, 2, 13],
+                                  [5, 10, 11, 8],
+                                  [9, 6, 7, 12],
+                                  [4, 15, 14, 1]])
+        self.board = np.array([[1, None, None, None],
+                               [2, None, None, None],
+                               [3, None, None, None],
+                               [4, None, None, None], ])
+        self.row_1 = self.board[: 1, : 4]
+        self.row_2 = self.board[1 : 2, 0 : 4]
         self.x_valid_align = []
         self.o_valid_align = []
 
@@ -24,9 +29,9 @@ class Board:
         print(self.o_valid_align)
 
     def check_win(self):
+        pass
 
 
 if __name__ == '__main__':
     my_board = Board()
-    my_board.check_valid_alignment()
-    my_board.check_win()
+    print(my_board.row_2)
