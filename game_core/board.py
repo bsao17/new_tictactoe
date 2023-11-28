@@ -5,10 +5,10 @@ class Board:
                          [5, 10, 11, 8],
                          [9, 6, 7, 12],
                          [4, 15, 14, 1]]
-        self.board = [[None, None, None, None],
-                      [None, None, None, None],
-                      [None, None, None, None],
-                      [None, None, None, None], ]
+        self.board = [["X", None, "X", "X"],
+                      [None, "X", None, None],
+                      [None, None, "X", None],
+                      [None, None, None, "X"], ]
         self.x_valid_align = []
         self.o_valid_align = []
 
@@ -24,9 +24,9 @@ class Board:
         print(self.o_valid_align)
 
     def check_win(self):
-        x_win = print("X Winner") if sum(self.x_valid_align) == 34 else print("X Loser")
-        o_win = print("O Winner") if sum(self.o_valid_align) == 34 else print("O Loser")
 
 
 if __name__ == '__main__':
-    pass
+    my_board = Board()
+    my_board.check_valid_alignment()
+    my_board.check_win()

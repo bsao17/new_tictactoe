@@ -34,9 +34,5 @@ def minimax(board, depth, maximizing_player):
         return value
 
 
-def board_evaluation(board):
-    pass
-
-
 if __name__ == '__main__':
     minimax(Board(), 16, True)
