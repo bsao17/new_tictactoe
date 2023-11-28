@@ -22,17 +22,13 @@ class Board:
         self.col_4 = self.board[:, 3]
         self.diag_1 = np.diag(self.board)
         self.diag_2 = np.diag(np.fliplr(self.board))
+        self.diag_3 = np.flip(self.diag_1, 0)
+        self.diag_4 = np.flip(self.diag_2, 0)
         self.x_valid_align = []
         self.o_valid_align = []
 
     # Check valid alignement for X or O
     def check_valid_alignment(self):
-        for row in range(4):
-            for col in range(4):
-                if self.board[row][col] == "X":
-                    self.x_valid_align.append(self.magic_id[row][col])
-                elif self.board[row][col] == "O":
-                    self.o_valid_align.append(self.magic_id[row][col])
         print(self.x_valid_align)
         print(self.o_valid_align)
 
@@ -52,3 +48,5 @@ if __name__ == '__main__':
     print("col 4", my_board.col_4)
     print("diag 1 ", my_board.diag_1)
     print("diag 2 ", my_board.diag_2)
+    print("diag 3 ", my_board.diag_3)
+    print("diag 4 ", my_board.diag_4)
