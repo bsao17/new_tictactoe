@@ -17,7 +17,7 @@ class Board:
                 return True
 
         # columns check
-        for col in self.board.T:  # (numpy method) T -> Transpose or turn the board for rows to cols and cols to rows
+        for col in self.board.T:  # (numpy method) T -> Transpose or turn the board for rows -> cols and cols -> rows
             if self.is_valid_align(col):
                 return True
 
@@ -28,11 +28,12 @@ class Board:
 
         return False
 
-    @staticmethod
-    def is_valid_align(line):
+
+    def is_valid_align(self, line):
         return None not in line and len(set(line)) == 1
 
 
 if __name__ == '__main__':
+
     my_board = Board()
     print(my_board.check_valid_alignment())
