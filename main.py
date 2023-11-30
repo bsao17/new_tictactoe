@@ -21,6 +21,8 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.player_one = Players("player_one", "x")
         self.player_two = Players("player_two", "o")
 
+        self.board = Board()
+
         # signals and slots connections
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
         self.pushButton_reset.clicked.connect(self.on_reset_triggered)
