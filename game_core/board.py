@@ -9,11 +9,6 @@ class Board:
                                [None, None, None, None],
                                [None, None, None, None]])
 
-        self.move_player = np.array(self.board)
-
-        self.x_valid_align = []
-        self.o_valid_align = []
-
     # Check valid alignement for X or O
     def check_valid_alignment(self):
         # rows check
@@ -33,7 +28,8 @@ class Board:
 
         return False
 
-    def is_valid_align(self, line):
+    @staticmethod
+    def is_valid_align(line):
         return None not in line and len(set(line)) == 1
 
 
