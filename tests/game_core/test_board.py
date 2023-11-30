@@ -17,10 +17,28 @@ def test_board_check_valid_alignment():
     assert board.check_valid_alignment() == False
 
 
-def test_valid_align():
+def test_valid_row_align():
     board = Board()
     board.board = np.array([['x', "x", "x", "x"],
                             [None, None, None, None],
                             [None, None, None, None],
                             [None, None, None, None]])
+    assert board.check_valid_alignment() == True
+
+
+def test_valid_col_align():
+    board = Board()
+    board.board = np.array([['x', None, None, None],
+                            ['x', None, None, None],
+                            ['x', None, None, None],
+                            ['x', None, None, None]])
+    assert board.check_valid_alignment() == True
+
+
+def test_valid_diag_align():
+    board = Board()
+    board.board = np.array([['x', None, None, None],
+                            [None, 'x', None, None],
+                            [None, None, 'x', None],
+                            [None, None, None, 'x']])
     assert board.check_valid_alignment() == True
