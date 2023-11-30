@@ -4,39 +4,12 @@ import numpy as np
 class Board:
     def __init__(self):
         # Initialise the game board
-        self.board = np.array([["x", "x", "x", "x"],
-                               ["o", None, None, None],
-                               ["o", None, None, None],
-                               ["o", None, None, None]])
-        self.row_1 = self.board[0]
-        self.row_2 = self.board[1]
-        self.row_3 = self.board[2]
-        self.row_4 = self.board[3]
-        self.col_1 = self.board[:, 0]
-        self.col_2 = self.board[:, 1]
-        self.col_3 = self.board[:, 2]
-        self.col_4 = self.board[:, 3]
-        self.diag_1 = np.diag(self.board)
-        self.diag_2 = np.diag(np.fliplr(self.board))
-        self.diag_3 = np.flip(self.diag_1, 0)
-        self.diag_4 = np.flip(self.diag_2, 0)
+        self.board = np.array([[None, None, None, None],
+                               [None, None, None, None],
+                               [None, None, None, None],
+                               [None, None, None, None]])
 
         self.move_player = np.array(self.board)
-
-        self.valid_align_list = [
-            self.row_1,
-            self.row_2,
-            self.row_3,
-            self.row_4,
-            self.col_1,
-            self.col_2,
-            self.col_3,
-            self.col_4,
-            self.diag_1,
-            self.diag_2,
-            self.diag_3,
-            self.diag_4,
-        ]
 
         self.x_valid_align = []
         self.o_valid_align = []
