@@ -5,9 +5,9 @@ class Board:
     def __init__(self):
         # Initialise the game board
         self.board = np.array([["x", "x", "x", "x"],
-                               [None, None, None, None],
-                               [None, None, None, None],
-                               [None, None, None, None]])
+                               ["o", None, None, None],
+                               ["o", None, None, None],
+                               ["o", None, None, None]])
         self.row_1 = self.board[0]
         self.row_2 = self.board[1]
         self.row_3 = self.board[2]
@@ -25,16 +25,15 @@ class Board:
 
     # Check valid alignement for X or O
     def check_valid_alignment(self):
-        for i in range(1, 5):
-            for j in range(1, 5):
-                if self.is_valid_align(self.board):
-                    print("the player win")
-                else:
-                    print("continue")
-                    return False
+        for row in range(1, 5):
+            for col in range(1, 5):
+                print(f"row: {row}, column: {col}")
 
     def is_valid_align(self, line):
-        return None not in line and len(line) == 1
+        if "x" in line:
+            return True
+        else:
+            False
 
 
 if __name__ == '__main__':
