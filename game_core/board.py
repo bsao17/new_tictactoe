@@ -33,7 +33,27 @@ class Board:
         return None not in line and len(set(line)) == 1
 
 
+    def set_value(self, row, col, value):
+        """Set the value ('X' or 'O') at the specified position on the board.
+
+        Args:
+            row (int): The row index.
+            col (int): The column index.
+            value (str): The value to set ('X' or 'O').
+
+        Returns:
+            bool: True if the value was set, False if the position is already occupied.
+        """
+        if self.board[row, col] is None:
+            self.board[row, col] = value
+            return True
+        return False
+
+
+
 if __name__ == '__main__':
 
     my_board = Board()
     print(my_board.check_valid_alignment())
+
+
