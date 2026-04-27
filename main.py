@@ -1,7 +1,6 @@
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QMessageBox
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import pyqtSlot
+from PySide6.QtGui import QFont
+from PySide6.QtWidgets import QMessageBox
+from PySide6 import QtWidgets
 
 from tictactoe_ui import Ui_MainWindow
 import sys
@@ -59,7 +58,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             event.ignore()  # Annuler la fermeture
 
-    @pyqtSlot()
     def on_close_triggered(self):
         """
         Trigger the overridden closeEvent method directly.
@@ -75,7 +73,6 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         self.close()  # Déclencher directement la méthode closeEvent surchargée
 
-    @pyqtSlot()
     def on_reset_triggered(self):
         pass
 
@@ -85,4 +82,4 @@ if __name__ == '__main__':
     window = Tictactoe_main()
     window.show()
 
-    app.exec_()
+    app.exec()
