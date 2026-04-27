@@ -1,5 +1,5 @@
 from PySide6.QtGui import QFont
-from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QMessageBox, QComboBox, QLabel
 from PySide6 import QtWidgets
 
 from tictactoe_ui import Ui_MainWindow
@@ -22,6 +22,17 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.player_two = Players("player_two", "o")
 
         self.board = Board()
+        self.difficulty = 3  # Par défaut: difficile
+
+        # Ajouter le sélecteur de difficulté
+        self.difficulty_label = QLabel("Difficulté:", self)
+        self.difficulty_label.setGeometry(720, 10, 100, 25)
+        
+        self.difficulty_combo = QComboBox(self)
+        self.difficulty_combo.setGeometry(720, 35, 120, 25)
+        self.difficulty_combo.addItems(["Facile", "Moyen", "Difficile"])
+        self.difficulty_combo.setCurrentIndex(2)  # Par défaut: difficile
+        self.difficulty_combo.currentIndexChanged.connect(self.change_difficulty)
 
         # signals and slots connections
         self.pushButton_stop.clicked.connect(self.on_close_triggered)
@@ -75,7 +86,7 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def ai_play(self):
         """L'IA joue son coup."""
-        best_move = find_best_move(self.board, "O")
+        best_move = find_best_move(self.board, "O", self.difficulty)
         if best_move:
             row, col = best_move
             button_num = row * 4 + col + 1
@@ -132,6 +143,10 @@ class Tictactoe_main(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def on_reset_triggered(self):
         self.reset_game()
+
+    def change_difficulty(self, index):
+        """Change la difficulté du jeu."""
+        self.difficulty = index + 1  # 1=facile, 2=moyen, 3=difficile
 
 
 if __name__ == '__main__':

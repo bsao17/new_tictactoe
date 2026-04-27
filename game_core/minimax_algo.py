@@ -97,13 +97,14 @@ def minimax(board, depth, maximizing_player):
         return value
 
 
-def find_best_move(board, player="X"):
+def find_best_move(board, player="X", difficulty=3):
     """
     Trouve le meilleur coup pour le joueur actuel.
     
     Args:
         board: instance de Board
         player: "X" ou "O"
+        difficulty: profondeur de recherche (1=facile, 2=moyen, 3=difficile)
     
     Returns:
         Tuple (row, col) du meilleur coup
@@ -117,12 +118,12 @@ def find_best_move(board, player="X"):
         new_board.board[move] = player
         
         if player == "X":
-            move_value = minimax(new_board, 3, False)
+            move_value = minimax(new_board, difficulty, False)
             if move_value > best_value:
                 best_value = move_value
                 best_move = move
         else:
-            move_value = minimax(new_board, 3, True)
+            move_value = minimax(new_board, difficulty, True)
             if move_value < best_value:
                 best_value = move_value
                 best_move = move
