@@ -1,0 +1,13 @@
+# files
+poetry.lock
+tictactoe_gui.ui
+
+# directory
+.idea
+.env
+
+# Python
+__pycache__/
+venv/
+*.pyc
+new_tictactoe/
